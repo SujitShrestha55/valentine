@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ff4e8a, #ff9a9e);
+        color: white;
+        text-align: center;
+    }
+
+    .container {
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .emoji {
+        font-size: 90px;
+        margin: 20px 0;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    button {
+        padding: 14px 26px;
+        font-size: 18px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #yesBtn {
+        background: white;
+        color: #ff4e8a;
+    }
+
+    #noBtn {
+        background: #ff4e4e;
+        color: white;
+    }
+
+    /* SECOND PAGE */
+    .love-page {
+        display: none;
+        padding: 20px;
+    }
+
+    .love-title {
+        font-size: 36px;
+        margin: 20px 0;
+        animation: fadeIn 1s ease;
+    }
+
+    .gallery {
+        max-width: 420px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* ONE BOX FOR 3 IMAGES */
+    .image-box {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        padding: 10px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .image-box img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+    .gallery img:last-child {
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- FIRST SCREEN -->
+<div class="container" id="mainPage">
+    <h1>Will you be my Valentine? ❤️</h1>
+    <div class="emoji">🥺💖</div>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes 💖</button>
+        <button id="noBtn">No</button>
+    </div>
+</div>
+
+<!-- SECOND SCREEN -->
+<div class="love-page" id="lovePage">
+    <div class="love-title">I LOVE YOU Punture ❤️</div>
+
+    <div class="gallery">
+
+        <!-- ONE BOX WITH 3 IMAGES -->
+        <div class="image-box">
+            <img src="IMG-20260103-WA0002.jpg">
+            <img src="VID-20260202-WA0014(1).jpg">
+            <img src="20251011_153646.jpg">
+        </div>
+
+        <!-- GIF -->
+        <img src="bubu-dudu-kisses.gif">
+    </div>
+</div>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+
+    let size = 18;
+
+    const noTexts = [
+        "Are you sure?",
+        "Really sure?",
+        "Think again!",
+        "Please click Yes",
+        "Don't break my heart 💔",
+        "Last chance!",
+        "Pretty please?",
+        "Just click Yes ❤️"
+    ];
+
+    let index = 0;
+
+    noBtn.addEventListener("click", () => {
+        noBtn.textContent = noTexts[index];
+        index = (index + 1) % noTexts.length;
+
+        size += 8;
+        yesBtn.style.fontSize = size + "px";
+        yesBtn.style.padding = (14 + size / 2) + "px " + (26 + size) + "px";
+    });
+
+    yesBtn.addEventListener("click", () => {
+        document.getElementById("mainPage").style.display = "none";
+        document.getElementById("lovePage").style.display = "block";
+    });
+</script>
+
+</body>
+</html>
